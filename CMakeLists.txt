@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 include_directories(certs)
 include_directories(jobfiles)
+
 find_package (Threads)
 
 add_executable(second_demo_nonboost_asio_client
