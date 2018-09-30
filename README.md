@@ -9,7 +9,7 @@ Ez a dokumentum tartalmazza egy elképzelt projekt keretében megvalósuló szer
 
 ## A szerver feladata:
 
-    • A szerver tárolja azokat a feladatokat (továbbiakman job-okat), amelyeket az egyes klienseknek el kell végezniük. A job maga bármit tartalmazhat (részletesen lásd jobleíró szakasz), struktúrája kötött ám tartalma tetszőleges. 
+    • A szerver tárolja azokat a feladatokat (továbbiakban job-okat), amelyeket az egyes klienseknek el kell végezniük. A job maga bármit tartalmazhat (részletesen lásd jobleíró szakasz), struktúrája kötött ám tartalma tetszőleges. 
     • A szerver feladata autentikálni a klienst. A kommunikáció során a kliens mindig csak jelzéseket, kéréseket fogalmaz meg a szerver felé, de annak eldöntése, hogy ezeket teljesíti-e teljes mértékben a szerver hatásköre. A jobok esetében ez azt jelenti, hogy a kliens jelzi, hogy készen áll egy feladat fogadására és végrehajtására (közölve, hogy milyen erőforrásokkal rendelkezik). 
     • A szerver feladata ezek után kiválasztani a következőként elvégzendő feladatot. 
     • A szerver valamennyi eseményt naplóz.
@@ -83,23 +83,14 @@ A HEADER tartalma:
 	Alapértelmezett értéke: „default” ekkor átmenetileg a konfigban 	szereplő helyre kerül 	kiírásra a BODY tartalma, majd a feldolgozás után törlésre kerül.
 A HEADER hossza így fix 512 byte:
 Byte térkép:
-Név
-bodylenght
-sender
-seq
-response_to
-type
-full_path
-Hossz
-8
-64
-4
-4
-4
-428
+
+|  Név  | body lenght  | sender | seq | response_to | type | full_path |
+| ----- | ------------ | ------ | --- | ----------- | ---- | --------- |
+| Hossz |       8      |   64   |  4  |      4      |   4  |    428    |
+
 
 
 A BODY tartalma:
     • üzenettípus függő a tartalom
 	Típusa: byte array
-	Hossza: nem nagyobb, mint sok sok sok byte
+	Hossza: nem nagyobb, mint 2^64 byte
